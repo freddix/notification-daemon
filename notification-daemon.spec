@@ -1,7 +1,7 @@
 Summary:	Notification Daemon
 Name:		notification-daemon
 Version:	0.7.6
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Applications/System
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/notification-daemon/0.7/%{name}-%{version}.tar.xz
@@ -51,11 +51,13 @@ sed -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/etc/xdg/autostart
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install -D %{SOURCE1} $RPM_BUILD_ROOT/etc/xdg/autostart/%{name}.desktop
+%{__sed} "s|@LIBEXECDIR@|%{_libexecdir}|" %{SOURCE1} \
+	> $RPM_BUILD_ROOT/etc/xdg/autostart/%{name}.desktop
 
 %find_lang %{name}
 
