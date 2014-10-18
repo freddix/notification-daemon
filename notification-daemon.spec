@@ -1,7 +1,7 @@
 Summary:	Notification Daemon
 Name:		notification-daemon
 Version:	0.7.6
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		Applications/System
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/notification-daemon/0.7/%{name}-%{version}.tar.xz
